@@ -528,7 +528,7 @@ agent:
             ✅ CORRETO: 5 perspectivas sobre a MESMA notícia = 5 ângulos
             ❌ ERRADO: 5 notícias diferentes = NÃO são ângulos, são pautas distintas
 
-         a. **Researcher agent** (handles research only — never angles):
+         a. **Researcher agent** (handles news discovery and ranking only — never angles):
             - Design from scratch, using knowledge from `_opensquad/core/best-practices/researching.md` to create a high-quality research agent
             - The researcher finds and ranks source material only. Angle generation is NEVER the researcher's job — it belongs to the creator agent, after the user selects a story (see rule 3b).
             - Create tasks/ directory with granular tasks based on performance_mode:
@@ -537,6 +537,8 @@ agent:
             - After research, add news selection checkpoint (user picks ONE story)
 
          b. **Platform-specific Creator agents**:
+            - **For news-based squads**: the creator is responsible for angle generation. Prepend `generate-angles.md` as the creator's FIRST task. This task runs in a dedicated pipeline step AFTER the news selection checkpoint — it generates 5 distinct angles from the ONE selected story. An angle selection checkpoint follows immediately. The content creation tasks run in a SEPARATE pipeline step AFTER angle selection.
+              - Alta Performance (news-based): `generate-angles.md` [step A, after news selection] → `create-{format}.md → optimize-{format}.md` [step B, after angle selection]
             - Design from scratch, using knowledge from `_opensquad/core/best-practices/copywriting.md` and the relevant platform best-practice file (e.g., `instagram-feed.md`) to create a high-quality creator agent
             - Use the format system: assign `format: {format-id}` to each creator step
               (e.g., `format: instagram-feed`). The Pipeline Runner injects the format
