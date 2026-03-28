@@ -94,47 +94,47 @@ export class RoomBuilder {
     const section = roomW / wallSections;
 
     // Section 1: Window — far left
-    s.add.image(section * 0.5, WALL_H - 6, FURNITURE_KEYS.windowBlindsOpen)
-      .setOrigin(0.5, 1).setScale(1.3).setDepth(0);
+    s.add.image(section * 0.6, WALL_H + 5, FURNITURE_KEYS.blindsLargeWhite)
+      .setOrigin(0.5, 1).setScale(1.8).setDepth(0);
 
-    // Section 2: Bookshelf — left
-    s.add.image(section * 1.5, WALL_H, FURNITURE_KEYS.bookshelf)
-      .setOrigin(0.5, 1).setDepth(0);
+    // Section 2: Bookshelf purple tall — left
+    s.add.image(section * 1.8, WALL_H + 40, FURNITURE_KEYS.bookshelfPurpleTall)
+      .setOrigin(0.5, 1).setScale(2).setDepth(0);
 
-    // Section 3: Whiteboard — perfectly centered (main focal point)
-    s.add.image(centerX, WALL_H, FURNITURE_KEYS.whiteboard)
-      .setOrigin(0.5, 1).setDepth(0);
-
-    // Section 4: Poster — wall-mounted where clock used to be
-    s.add.image(section * 3.5, WALL_H, FURNITURE_KEYS.posterBlue)
-      .setOrigin(0.5, 1).setDepth(0);
+    // Section 4: Whiteboard stand with graph — right of center
+    s.add.image(section * 3.2, WALL_H + 40, FURNITURE_KEYS.whiteboardStandGraph)
+      .setOrigin(0.5, 1).setScale(2.0).setDepth(0);
 
     // Section 5: Window — far right
-    s.add.image(section * 4.5, WALL_H - 6, FURNITURE_KEYS.windowBlindsOpen)
-      .setOrigin(0.5, 1).setScale(1.3).setDepth(0);
+    s.add.image(section * 4.4, WALL_H + 5, FURNITURE_KEYS.blindsLargeWhite)
+      .setOrigin(0.5, 1).setScale(1.8).setDepth(0);
 
     // ================================================================
     // CORNER PLANTS — one plant anchored to each room corner
     // ================================================================
     // Top-left corner
     s.add.image(MARGIN / 2 + 8, WALL_H + TILE * 2, FURNITURE_KEYS.monstera)
-      .setOrigin(0.5, 1).setScale(0.85).setDepth(WALL_H + TILE * 2);
+      .setOrigin(0.5, 1).setScale(1.3).setDepth(WALL_H + TILE * 2);
+
+    // Top-right corner — water cooler against the right wall
+    s.add.image(roomW - MARGIN / 4, WALL_H + TILE * 2, FURNITURE_KEYS.waterCooler)
+      .setOrigin(0.5, 1).setScale(1.5).setDepth(WALL_H + TILE * 2 + 1);
 
     // Bottom-left corner
     s.add.image(MARGIN / 2, roomH - TILE * 0.5, FURNITURE_KEYS.plant3)
       .setOrigin(0.5, 1).setScale(1.8).setDepth(roomH - TILE * 0.5);
 
     // Bottom-right corner
-    s.add.image(roomW - MARGIN / 2, roomH - TILE * 0.5, FURNITURE_KEYS.plantPoof)
+    s.add.image(roomW - MARGIN / 2.5, roomH - TILE * 0.5, FURNITURE_KEYS.plantPoof)
       .setOrigin(0.5, 1).setScale(1.8).setDepth(roomH - TILE * 0.5);
 
-    // Upper-left and upper-right (upper vertical quarter)
-    const upperY = deskAreaTop + (deskAreaBottom - deskAreaTop) / 4;
-    s.add.image(MARGIN / 2, upperY, FURNITURE_KEYS.plantSpindly)
-      .setOrigin(0.5, 1).setScale(1.2).setDepth(upperY);
-    s.add.image(roomW - MARGIN / 2, upperY, FURNITURE_KEYS.plantSpindly)
-      .setOrigin(0.5, 1).setScale(1.2).setDepth(upperY);
+    // Bottom-right corner — treasure chest
+    s.add.image(roomW - MARGIN / 4, roomH - TILE * 2, FURNITURE_KEYS.treasurechestGold)
+      .setOrigin(0.5, 1).setScale(1.4).setDepth(1);
 
+
+
+      
     // Middle-left and middle-right (vertical center)
     const midY = WALL_H + (roomH - WALL_H) / 2;
     s.add.image(MARGIN / 2, midY, FURNITURE_KEYS.monsteraSmall)
@@ -178,6 +178,14 @@ export class RoomBuilder {
     // Coffee mug on table
     s.add.image(centerX + 12, loungeY + TILE * 1.3, FURNITURE_KEYS.coffeeMugBlue)
       .setOrigin(0.5, 1).setDepth(loungeY + TILE * 1.5 + 1);
+
+    // Coffee station — right side of lounge
+    const stationX = centerX + TILE * 6;
+    const stationY = loungeY + TILE * 1.9;
+    s.add.image(stationX, stationY, FURNITURE_KEYS.coffeetableBlackH)
+      .setOrigin(0.5, 1).setScale(1.5).setDepth(stationY);
+    s.add.image(stationX, stationY + 5, FURNITURE_KEYS.coffeepotRight)
+      .setOrigin(0.5, 1).setScale(1.2).setDepth(stationY + 1);
 
   }
 }

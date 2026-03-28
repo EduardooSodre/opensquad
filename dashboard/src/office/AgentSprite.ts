@@ -39,6 +39,7 @@ export class AgentSprite {
   private agent: Agent;
   private characterName: CharacterName;
   private deskVariant: 'black' | 'white';
+  private avatarDisplayH: number = 0;
 
   constructor(
     scene: Phaser.Scene,
@@ -74,6 +75,10 @@ export class AgentSprite {
       .setOrigin(0.5, 0.5)
       .setScale(AVATAR_SCALE)
       .setDepth(y);  // LOWEST depth — desk and monitor render in front
+    // Lock display height so texture swaps between frames of different pixel dimensions
+    // don't cause a visible scale jump (e.g. Male1 blink=56px tall vs talk=51px tall).
+    // Width is NOT locked — each frame scales proportionally from this height reference.
+    this.avatarDisplayH = this.avatar.displayHeight;
 
     // Desk table surface — renders IN FRONT of avatar (covers lower body)
     this.deskTable = scene.add.image(x, y, FURNITURE_KEYS.deskWood)
@@ -145,25 +150,14 @@ export class AgentSprite {
     return '#' + num.toString(16).padStart(6, '0');
   }
 
-  private getDeskKey(status: AgentStatus): string {
-    // Using _down orientation — we see the screen, avatar sits behind monitor
-    if (status === 'working' || status === 'delivering') {
-      return this.deskVariant === 'black' ? DESK_KEYS.blackCoding : DESK_KEYS.whiteCoding;
-    }
-    return this.deskVariant === 'black' ? DESK_KEYS.blackIdle : DESK_KEYS.whiteIdle;
+  private getDeskKey(_status: AgentStatus): string {
+    // Always show coding desk — all agents are always working
+    return this.deskVariant === 'black' ? DESK_KEYS.blackCoding : DESK_KEYS.whiteCoding;
   }
 
-  private getAvatarKey(status: AgentStatus): string {
-    const keys = avatarKeys(this.characterName);
-    switch (status) {
-      case 'working':
-      case 'delivering':
-        return keys.talk;
-      case 'done':
-        return keys.wave1;
-      default:
-        return keys.blink;
-    }
+  private getAvatarKey(_status: AgentStatus): string {
+    // Always start in talk frame — animation will cycle from there
+    return avatarKeys(this.characterName).talk;
   }
 
   private drawLabelBackground(x: number, labelY: number): void {
@@ -187,48 +181,24 @@ export class AgentSprite {
     this.statusDot.setDepth(901);
   }
 
-  private startAnimation(status: AgentStatus): void {
-    const keys = avatarKeys(this.characterName);
+  private setAvatarFrame(key: string): void {
+    this.avatar.setTexture(key);
+    // Scale uniformly so height matches the reference (talk frame) — preserves aspect ratio
+    this.avatar.setScale(this.avatarDisplayH / this.avatar.height);
+  }
 
-    if (status === 'working' || status === 'delivering') {
-      let frame = 0;
-      this.animTimer = this.scene.time.addEvent({
-        delay: 500,
-        loop: true,
-        callback: () => {
-          frame = (frame + 1) % 2;
-          this.avatar.setTexture(frame === 0 ? keys.talk : keys.blink);
-        },
-      });
-    } else if (status === 'done') {
-      let frame = 0;
-      let waveCount = 0;
-      this.animTimer = this.scene.time.addEvent({
-        delay: 400,
-        loop: true,
-        callback: () => {
-          if (waveCount < 4) {
-            frame = (frame + 1) % 2;
-            this.avatar.setTexture(frame === 0 ? keys.wave1 : keys.wave2);
-            waveCount++;
-          } else {
-            this.avatar.setTexture(keys.blink);
-            this.animTimer?.destroy();
-          }
-        },
-      });
-    } else {
-      this.animTimer = this.scene.time.addEvent({
-        delay: 2000 + Math.random() * 2000,
-        loop: true,
-        callback: () => {
-          this.avatar.setTexture(keys.talk);
-          this.scene.time.delayedCall(200, () => {
-            this.avatar.setTexture(keys.blink);
-          });
-        },
-      });
-    }
+  private startAnimation(_status: AgentStatus): void {
+    // Always run the working animation regardless of status
+    const keys = avatarKeys(this.characterName);
+    let frame = 0;
+    this.animTimer = this.scene.time.addEvent({
+      delay: 500,
+      loop: true,
+      callback: () => {
+        frame = (frame + 1) % 2;
+        this.setAvatarFrame(frame === 0 ? keys.talk : keys.blink);
+      },
+    });
   }
 
   updateStatus(agent: Agent): void {
@@ -236,7 +206,7 @@ export class AgentSprite {
     this.agent = agent;
 
     this.desk.setTexture(this.getDeskKey(agent.status));
-    this.avatar.setTexture(this.getAvatarKey(agent.status));
+    this.setAvatarFrame(this.getAvatarKey(agent.status));
 
     this.animTimer?.destroy();
     this.startAnimation(agent.status);

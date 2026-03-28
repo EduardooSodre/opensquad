@@ -93,6 +93,13 @@ export const FURNITURE_KEYS = {
   armchairTanDown: 'furniture_armchair_tan_down',
   deskWood: 'furniture_desk_wood',
   fancyRugWide: 'furniture_fancy_rug_wide',
+  waterCooler: 'furniture_water_cooler',
+  whiteboardStandGraph: 'furniture_whiteboard_stand_graph',
+  bookshelfPurpleTall: 'furniture_bookshelf_purple_tall',
+  coffeetableBlackH: 'furniture_coffeetable_black_h',
+  coffeepotRight: 'furniture_coffeepot_right',
+  blindsLargeWhite: 'furniture_blinds_large_white',
+  treasurechestGold: 'furniture_treasurechest_gold',
 } as const;
 
 export const FURNITURE_PATHS: Record<string, string> = {
@@ -133,4 +140,11 @@ export const FURNITURE_PATHS: Record<string, string> = {
   [FURNITURE_KEYS.armchairTanDown]: 'assets/furniture/armchair_tan_down.png',
   [FURNITURE_KEYS.deskWood]: 'assets/furniture/desk_wood.png',
   [FURNITURE_KEYS.fancyRugWide]: 'assets/furniture/fancy_rug_wide.png',
+  [FURNITURE_KEYS.waterCooler]: 'assets/furniture/water_cooler_better.png',
+  [FURNITURE_KEYS.whiteboardStandGraph]: 'assets/furniture/whiteboard_stand_graph.png',
+  [FURNITURE_KEYS.bookshelfPurpleTall]: 'assets/furniture/bookshelf_purple_tall.png',
+  [FURNITURE_KEYS.coffeetableBlackH]: 'assets/furniture/coffeetable_black_horizontal.png',
+  [FURNITURE_KEYS.coffeepotRight]: 'assets/furniture/coffeepot_right.png',
+  [FURNITURE_KEYS.blindsLargeWhite]: 'assets/furniture/blinds_large_closed_white.png',
+  [FURNITURE_KEYS.treasurechestGold]: 'assets/furniture/treasurechest_closed_gold.png',
 };
