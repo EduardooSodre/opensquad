@@ -168,6 +168,7 @@ Apply these lightweight rules per sprite category:
 | Rug / carpet | Below all furniture — never rendered visually above a character |
 | Wall decorations (blinds, poster, bookshelf, clock) | Within the wall strip (`y ≤ WALL_H`) — not on the floor |
 | Accessories (mug, backpack, lantern) | On or immediately beside a desk — not in the middle of a walkway |
+| Desk base (deskTable) | Below the avatar, aligned with the work grid — not in the lounge zone or wall strip |
 
 **Criterion 4 — Unwanted Overlap**
 Check if a sprite visually covers another in a way that breaks scene logic:
@@ -175,8 +176,11 @@ Check if a sprite visually covers another in a way that breaks scene logic:
 - Rug floating visually above a couch → FAIL
 - Two identical sprites stacked at the same pixel position → FAIL
 - Desk partially clipped by a wall decoration → FAIL
+- No scene-breaking overlaps visible → PASS
 
 **UNCERTAIN rule:** If you cannot determine PASS or FAIL from the screenshot alone (e.g. the sprite is partially hidden, or the position rule doesn't clearly apply), mark it UNCERTAIN and note the specific question. You will ask the user about all UNCERTAIN sprites together before proceeding to 7.5.
+
+**Invisible sprite rule:** If a sprite from the inventory is not visible in the screenshot at all (e.g. a per-agent desk sprite outside the visible viewport), mark all four criteria UNCERTAIN with note: "sprite not visible in screenshot."
 
 #### 7.4 DOCUMENT
 
