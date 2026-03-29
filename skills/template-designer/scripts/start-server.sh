@@ -47,13 +47,6 @@ if [[ -z "$URL_HOST" ]]; then
   fi
 fi
 
-# Windows/Git Bash auto-foreground
-case "${OSTYPE:-}" in
-  msys*|cygwin*|mingw*) FOREGROUND="true" ;;
-esac
-if [[ -n "${MSYSTEM:-}" ]]; then
-  FOREGROUND="true"
-fi
 
 CONTENT_DIR="${SESSION_DIR}/content"
 STATE_DIR="${SESSION_DIR}/state"

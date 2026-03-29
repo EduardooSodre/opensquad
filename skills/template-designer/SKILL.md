@@ -39,13 +39,13 @@ Interactive visual companion for selecting and refining image templates during s
 
 ### On Windows (Git Bash)
 
-The script auto-detects Windows and runs in foreground mode. Use `run_in_background: true` on the Bash tool call:
+The server runs in the background on all platforms:
 
 ~~~bash
 bash skills/template-designer/scripts/start-server.sh --session-dir "squads/{code}/_build/template-session"
 ~~~
 
-Then read `squads/{code}/_build/template-session/state/server-info.json` on your next turn to get the URL and port.
+The script prints the server info JSON on success. If it doesn't appear, read `squads/{code}/_build/template-session/state/server-info.json`.
 
 ### On macOS/Linux
 
