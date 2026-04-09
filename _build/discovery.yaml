@@ -1,0 +1,38 @@
+squad_code: "insta-project-carousel"
+purpose: "Squad que gera carrosséis de Instagram a partir de projetos no site https://du-software.vercel.app/, cria imagens e publica automaticamente no perfil @dusoftware."
+domain: "mixed"
+
+company:
+  name: "Du-Software"
+  tone: "Profissional, moderno, técnico e focado na entrega de valor e qualidade estética."
+  products: "Websites Institucionais, E-commerce, Sistemas Web Customizados, SaaS, Design UI/UX."
+
+language: "Português (Brasil)"
+
+context:
+  audience: "Novos leads (atrair potenciais clientes que ainda não conhecem a Du-Software)"
+  platforms: "Instagram"
+  tone: "Design-First (estética premium) e Focado em Negócios (ROI e resultados)"
+  trigger: "Manual / Sob demanda"
+  systems: "Instagram Publisher, Portfolio Website"
+
+tools_needed:
+  - "template-designer"
+  - "image-creator"
+  - "instagram-publisher"
+
+investigation:
+  enabled: true
+  profiles:
+    - url: "https://www.instagram.com/kacio.filipe"
+      platform: "instagram"
+      investigation_mode: "profile_3"
+    - url: "https://www.instagram.com/_gustavocampelo"
+      platform: "instagram"
+      investigation_mode: "profile_3"
+    - url: "https://www.instagram.com/mazzeidesign_"
+      platform: "instagram"
+      investigation_mode: "profile_3"
+
+target_formats:
+  - "instagram-feed"
