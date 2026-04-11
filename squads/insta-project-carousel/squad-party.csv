@@ -1,0 +1,6 @@
+id,displayName,icon,path
+researcher,Project Peter,🔍,./agents/peter.agent.md
+copywriter,Copywriter Cassie,✍️,./agents/cassie.agent.md
+designer,Designer Dante,🎨,./agents/dante.agent.md
+reviewer,Reviewer Rina,⚖️,./agents/rina.agent.md
+publisher,Publisher Paul,🚀,./agents/paul.agent.md

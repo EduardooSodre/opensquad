@@ -1,0 +1,48 @@
+---
+id: insta-project-carousel
+name: Instagram Project Carousel
+description: Squad que gera carrosséis de Instagram a partir dos projetos do portfólio no site da Du-Software.
+icon: 📸
+skills:
+  - web_search
+  - web_fetch
+  - template-designer
+  - image-creator
+  - instagram-publisher
+pipeline:
+  steps:
+    - id: extract-project-data
+      agent: researcher
+      description: Extrai dados e métricas de um projeto do site.
+      inputFile: c:\Users\eddua\opensquad\_opensquad\_memory\company.md
+      outputFile: squads/insta-project-carousel/output/project-data.yaml
+      execution: inline
+    - id: create-carousel-script
+      agent: copywriter
+      description: Escreve o roteiro do carrossel focado em ROI e Design-First.
+      inputFile: squads/insta-project-carousel/output/project-data.yaml
+      outputFile: squads/insta-project-carousel/output/carousel-script.md
+      format: instagram-feed
+      execution: inline
+    - id: render-slides
+      agent: designer
+      description: Renderiza os slides em HTML/CSS premium.
+      inputFile: squads/insta-project-carousel/output/carousel-script.md
+      outputFile: squads/insta-project-carousel/output/slides/
+      format: image-design
+      execution: inline
+    - id: verify-quality
+      agent: reviewer
+      description: Revisa o carrossel contra os critérios de design e copy.
+      inputFile: squads/insta-project-carousel/output/slides/
+      outputFile: squads/insta-project-carousel/output/review-report.md
+      format: review
+      on_reject: create-carousel-script
+      execution: inline
+    - id: publish-to-insta
+      agent: publisher
+      description: Faz o upload e publicação final no Instagram.
+      inputFile: squads/insta-project-carousel/output/slides/
+      format: social-networks-publishing
+      execution: inline
+---
