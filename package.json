@@ -8,10 +8,12 @@
     "publish-carousel": "node squads/insta-project-carousel/scripts/publish-carousel.js"
   },
   "dependencies": {
+    "axios": "^1.15.0",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "form-data": "^4.0.5",
+    "localtunnel": "^2.0.2",
     "playwright": "^1.58.2",
-    "puppeteer": "^22.0.0",
-    "axios": "^1.6.0",
-    "form-data": "^4.0.0",
-    "dotenv": "^16.0.0"
+    "puppeteer": "^22.15.0"
   }
 }
