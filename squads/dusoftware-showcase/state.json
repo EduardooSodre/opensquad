@@ -1,0 +1,24 @@
+{
+  "squad": "dusoftware-showcase",
+  "status": "completed",
+  "step": {
+    "current": 5,
+    "total": 5,
+    "label": "packaging"
+  },
+  "agents": [
+    { "id": "ferdinand", "name": "Ferdinand", "icon": "🧠", "status": "done", "desk": { "col": 1, "row": 1 } },
+    { "id": "lana", "name": "Lana", "icon": "✍️", "status": "done", "desk": { "col": 2, "row": 1 } },
+    { "id": "dante", "name": "Dante", "icon": "🎨", "status": "done", "desk": { "col": 3, "row": 1 } },
+    { "id": "spark", "name": "Spark", "icon": "⚙️", "status": "done", "desk": { "col": 1, "row": 2 } }
+  ],
+  "handoff": {
+    "from": "spark",
+    "to": "ferdinand",
+    "message": "Conjunto de 10 imagens premium geradas com sucesso. Pronto para pacote final.",
+    "completedAt": "2026-04-13T02:45:49-03:00"
+  },
+  "startedAt": "2026-04-13T02:42:11-03:00",
+  "updatedAt": "2026-04-13T02:46:11-03:00",
+  "completedAt": "2026-04-13T02:46:11-03:00"
+}
