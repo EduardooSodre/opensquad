@@ -1,0 +1,37 @@
+name: dusoftware-showcase
+description: Squad especializada em transformar projetos de software em carrosséis de portfólio de alta fidelidade (Spatial Design).
+version: 1.0.0
+
+pipeline:
+  - id: intelligence
+    name: Intelligence & Research
+    agent: ferdinand
+    description: Analisa os dados do projeto alvo e define o ângulo narrativo de maior impacto.
+    prompt: "Analise o projeto {project_name}. Foque em extrair: 1. O maior desafio resolvido. 2. A stack técnica utilizada. 3. O resultado visual e de negócio. Crie um resumo executivo para o roteiro."
+
+  - id: scripting
+    name: Narrative Scripting
+    agent: lana
+    description: Transforma a inteligência em um roteiro de 10 slides focado em ROI.
+    prompt: "Com base no resumo do Ferdinand, escreva um roteiro de 10 slides. Cada slide deve ter: Título, Subtítulo, Badge e Eyebrow. Siga o tom Profissional/Moderno da Du-Software."
+
+  - id: art-direction
+    name: Spatial Art Direction
+    agent: dante
+    description: Define o tema visual (cores, luzes, profundidade) baseado no branding do projeto.
+    prompt: "Crie o sistema visual para o carrossel. Defina as variáveis CSS para {brand_color} e como os elementos do projeto flutuarão na cena 'Spatial'."
+
+  - id: automation
+    name: Automated Rendering
+    agent: spark
+    description: Executa o código de renderização para gerar os HTMLs e PNGs finais.
+    prompt: "Renderize os 10 slides usando o script de automação 'spatial-renderer.js'. Garanta que todas as imagens estejam otimizadas."
+
+  - id: packaging
+    name: Final Bundle
+    agent: ferdinand
+    description: Gera a legenda para o Instagram e organiza os arquivos para entrega.
+    prompt: "Crie uma legenda persuasiva focada em leads B2B. Organize os slides PNG em uma pasta /output pronta para postagem."
+
+output_path: ./output
+memories_path: ./_memory

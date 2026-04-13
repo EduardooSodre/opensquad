@@ -7,5 +7,14 @@
       "Edit(/.claude/skills/opensquad-dev/**)"
     ]
   },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ]
+    }
+  },
   "outputStyle": "default"
 }

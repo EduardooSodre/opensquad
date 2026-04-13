@@ -7,18 +7,48 @@
     "label": "publish-to-insta"
   },
   "agents": [
-    {"id": "researcher", "name": "Project Peter", "icon": "🔍", "status": "done", "desk": {"col": 1, "row": 1}},
-    {"id": "copywriter", "name": "Copywriter Cassie", "icon": "✍️", "status": "done", "desk": {"col": 2, "row": 1}},
-    {"id": "designer", "name": "Designer Dante", "icon": "🎨", "status": "done", "desk": {"col": 3, "row": 1}},
-    {"id": "reviewer", "name": "Reviewer Rina", "icon": "⚖️", "status": "done", "desk": {"col": 1, "row": 2}},
-    {"id": "publisher", "name": "Publisher Paul", "icon": "🚀", "status": "working", "desk": {"col": 2, "row": 2}}
+    {
+      "id": "peter",
+      "name": "Project Peter",
+      "icon": "🔍",
+      "status": "done",
+      "desk": { "col": 1, "row": 1 }
+    },
+    {
+      "id": "cassie",
+      "name": "Copywriter Cassie",
+      "icon": "✍️",
+      "status": "done",
+      "desk": { "col": 2, "row": 1 }
+    },
+    {
+      "id": "dante",
+      "name": "Designer Dante",
+      "icon": "🎨",
+      "status": "done",
+      "desk": { "col": 3, "row": 1 }
+    },
+    {
+      "id": "rina",
+      "name": "Reviewer Rina",
+      "icon": "⚖️",
+      "status": "done",
+      "desk": { "col": 1, "row": 2 }
+    },
+    {
+      "id": "paul",
+      "name": "Publisher Paul",
+      "icon": "🚀",
+      "status": "working",
+      "desk": { "col": 2, "row": 2 }
+    }
   ],
   "handoff": {
-    "from": "reviewer",
-    "to": "publisher",
-    "message": "Carrossel Autyro APROVADO. Pronto para dry-run e deploy no Instagram.",
-    "completedAt": "2026-04-09T19:53:52Z"
+    "from": "rina",
+    "to": "paul",
+    "message": "Carrossel APROVADO com nota 10/10. Slides 100% validados. Pode iniciar o deploy no feed da DuSoftware.",
+    "completedAt": "2026-04-13T02:00:33Z"
   },
-  "startedAt": "2026-04-09T19:44:36Z",
-  "updatedAt": "2026-04-09T19:53:52Z"
+  "startedAt": "2026-04-13T01:45:25Z",
+  "updatedAt": "2026-04-13T02:00:33Z"
 }

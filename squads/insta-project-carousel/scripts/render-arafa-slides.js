@@ -1,19 +1,26 @@
 const fs = require('fs');
 const path = require('path');
 
-const SLIDES_DIR = path.resolve(__dirname, '../output/2026-04-09-194436/v1/slides');
+const RUN_ID = "2026-04-13-114510";
+const SLIDES_DIR = path.resolve(__dirname, `../output/${RUN_ID}/slides/v1`);
 
-// Imagens Mobile Reais fornecidas pelo usuário
+// Garantir que a pasta existe
+if (!fs.existsSync(SLIDES_DIR)) {
+    fs.mkdirSync(SLIDES_DIR, { recursive: true });
+}
+
+// Imagens Mobile e Desktop reais da DuSoftware/A Rafa Criou
 const IMG_MOBILE_HOME = "file:///C:/Users/eddua/.gemini/antigravity/brain/f58056a2-b772-43b4-87ef-f28a1f4cf0f6/arafacriou_home_mobile_1776050491771.png";
 const IMG_MOBILE_PRODUCT = "file:///C:/Users/eddua/.gemini/antigravity/brain/f58056a2-b772-43b4-87ef-f28a1f4cf0f6/arafacriou_product_mobile_1776050513213.png";
 const IMG_DESKTOP_HOME = "file:///C:/Users/eddua/.gemini/antigravity/brain/f58056a2-b772-43b4-87ef-f28a1f4cf0f6/arafacriou_home_clean_1776049744550.png";
+const LOGO_PATH = "file:///c:/Users/eddua/opensquad/squads/insta-project-carousel/logo-dusoftware.svg";
 
 const slidesData = [
   {
     id: "01",
     badge: "Case Study",
-    eyebrow: "A Rafa Criou — E-commerce Digital",
-    h2: "Transformando o mercado de<br><em>artes digitais.</em>",
+    eyebrow: "A Rafa Criou — E-commerce",
+    h2: "De Loja Manual a<br><em>E-commerce Global 24/7.</em>",
     bodyHtml: `
       <div class="composition-wrapper">
         <div class="mockup-macbook perspective-left">
@@ -32,21 +39,21 @@ const slidesData = [
   {
     id: "02",
     badge: "O Desafio",
-    eyebrow: "Conectando o Mundo",
-    h2: "Vender arte digital para o<br><em>mundo inteiro.</em>",
+    eyebrow: "Logística",
+    h2: "O teto de vidro da<br><em>logística manual.</em>",
     bodyHtml: `
       <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px; width: 800px; text-align: left;">
-        <div class="feature-card">Integração multi-moedas e multi-idiomas em tempo real.</div>
-        <div class="feature-card">Arquivos de alta resolução com entrega instantânea.</div>
-        <div class="feature-card">Checkout global (Stripe, PayPal, Pix).</div>
+        <div class="feature-card">Entregas que dependiam de intervenção humana.</div>
+        <div class="feature-card">Escala limitada pelo fuso horário e energia física.</div>
+        <div class="feature-card">Gargalos no fluxo de checkout e recebimento.</div>
       </div>
     `
   },
   {
     id: "03",
-    badge: "Desktop View",
-    eyebrow: "Interface Desktop",
-    h2: "Experiência <em>fluida e imersiva</em><br>em telas grandes.",
+    badge: "Big Win",
+    eyebrow: "Escala",
+    h2: "Código não dorme.<br><em>Seres humanos sim.</em>",
     bodyHtml: `
       <div class="composition-wrapper single">
         <div class="mockup-macbook perspective-center">
@@ -59,23 +66,9 @@ const slidesData = [
   },
   {
     id: "04",
-    badge: "Tech Stack",
-    eyebrow: "Engenharia de Ponta",
-    h2: "Próxima geração com<br><em>Next.js 15</em> e R2.",
-    bodyHtml: `
-      <div class="grid-tech">
-        <div class="tech-item"><strong>Next.js + TS</strong><br>Full Stack</div>
-        <div class="tech-item"><strong>Cloudflare R2</strong><br>Storage</div>
-        <div class="tech-item"><strong>DeepL API</strong><br>IA i18n</div>
-        <div class="tech-item"><strong>Stripe</strong><br>Payments</div>
-      </div>
-    `
-  },
-  {
-    id: "05",
-    badge: "Mobile Case",
-    eyebrow: "Nativo na Web",
-    h2: "Shopping na <em>palma da mão.</em><br>Focado em conversão.",
+    badge: "Mecanismo UX",
+    eyebrow: "Design-First",
+    h2: "Otimizado para<br><em>Conversão Imediata.</em>",
     bodyHtml: `
       <div class="composition-wrapper single">
         <div class="mockup-iphone perspective-center">
@@ -87,23 +80,37 @@ const slidesData = [
     `
   },
   {
+    id: "05",
+    badge: "Tech Stack",
+    eyebrow: "Infraestrutura",
+    h2: "A arquitetura da<br><em>escala infinita.</em>",
+    bodyHtml: `
+      <div class="grid-tech">
+        <div class="tech-item"><strong>Next.js 15</strong><br>Performance Core</div>
+        <div class="tech-item"><strong>AWS SDK</strong><br>Cloud Reliable</div>
+        <div class="tech-item"><strong>Cloudinary</strong><br>Asset Optimization</div>
+        <div class="tech-item"><strong>Tailwind CSS</strong><br>Design System</div>
+      </div>
+    `
+  },
+  {
     id: "06",
-    badge: "Global Sales",
-    eyebrow: "Pagamentos",
-    h2: "Sua plataforma pronta para<br>o <em>comércio mundial.</em>",
+    badge: "Expansão",
+    eyebrow: "Global",
+    h2: "Conquistando o mundo<br>em <em>3 idiomas.</em>",
     bodyHtml: `
        <div class="payment-check">
-          <div><span>Pix & Mercado Pago</span> <span>✓</span></div>
-          <div><span>Stripe & PayPal</span> <span>✓</span></div>
-          <div><span>Multimoedas</span> <span>✓</span></div>
+          <div><span>Português, Espanhol, Inglês</span> <span>✓</span></div>
+          <div><span>Marketplace Internacional</span> <span>✓</span></div>
+          <div><span>Zero Custo Extra por Língua</span> <span>✓</span></div>
        </div>
     `
   },
   {
     id: "07",
-    badge: "O Produto",
-    eyebrow: "Hero Mockup",
-    h2: "Design que <em>valoriza a arte.</em><br>Software de elite.",
+    badge: "Resultados",
+    eyebrow: "O Produto",
+    h2: "Liberdade operacional e<br><em>Software de elite.</em>",
     bodyHtml: `
       <div class="composition-wrapper combo">
         <div class="mockup-macbook perspective-back">
@@ -123,7 +130,7 @@ const slidesData = [
     id: "08",
     badge: "Performance",
     eyebrow: "Google Speed",
-    h2: "Métricas <em>imbatíveis.</em><br>100/100 Lighthouse.",
+    h2: "Sites rápidos<br><em>vendem mais.</em>",
     bodyHtml: `
       <div class="lighthouse-circles">
         <div class="score-circle">100<span>Perf</span></div>
@@ -134,15 +141,15 @@ const slidesData = [
   },
   {
     id: "09",
-    badge: "Resultados",
+    badge: "Checklist",
     eyebrow: "O que entregamos",
-    h2: "Software <em>sem limites.</em>",
+    h2: "E-commerce <em>sem limites.</em>",
     bodyHtml: `
       <ul class="summary-list">
-        <li>Venda Global em 3 Idiomas</li>
-        <li>Infraestrutura Serverless</li>
-        <li>Arquivos entregues via R2</li>
-        <li>UX Premium Eduardo Sodré</li>
+        <li>Venda Global 24/7 Automatizada</li>
+        <li>Entrega Digital Instantânea</li>
+        <li>UX Premium & Mobile-First</li>
+        <li>Stack Moderna (DuSoftware)</li>
       </ul>
     `
   },
@@ -153,8 +160,8 @@ const slidesData = [
     h2: "Pronto para escalar sua<br><em>ideia no mundo?</em>",
     bodyHtml: `
       <div class="cta-box">
-        <div class="btn-primary">Comente "WEB" 👇</div>
-        <p>Construímos plataformas de elite para quem não aceita o básico.</p>
+        <div class="btn-primary">Comente "APP" 👇</div>
+        <p>Transformamos operações manuais em máquinas escaláveis de software.</p>
       </div>
     `
   }
@@ -168,9 +175,9 @@ const template = (data) => `<!DOCTYPE html>
     @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,900;1,900&display=swap');
     
     :root {
-      --brand-indigo: #6366F1;
+      --brand-teal: #00D9A6;
       --brand-violet: #8B5CF6;
-      --bg-dark: #06070B;
+      --bg-dark: #08090D;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -187,28 +194,28 @@ const template = (data) => `<!DOCTYPE html>
     .bg-grid {
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(99,102,241,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99,102,241,0.035) 1px, transparent 1px);
+        linear-gradient(rgba(0,217,166,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,217,166,0.02) 1px, transparent 1px);
       background-size: 70px 70px;
     }
     .bg-glow {
       position: absolute; top: 400px; left: 50%;
       transform: translateX(-50%);
       width: 1100px; height: 900px; z-index: 0; pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.05) 45%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(0,217,166,0.1) 0%, rgba(139,92,246,0.02) 45%, transparent 70%);
     }
 
     /* ── Top Bar ── */
     .brand-bar { position: absolute; top: 60px; left: 70px; z-index: 50; }
-    .brand-bar img { height: 45px; }
+    .brand-bar img { height: 32px; }
 
     .badge {
       position: absolute; top: 60px; right: 70px; z-index: 50;
-      background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.3);
-      padding: 12px 24px; border-radius: 100px; font-weight: 700; color: #A5B4FC;
+      background: rgba(0,217,166,0.05); border: 1px solid rgba(0,217,166,0.2);
+      padding: 12px 24px; border-radius: 100px; font-weight: 700; color: #00D9A6;
       display: flex; align-items: center; gap: 10px; font-size: 18px;
     }
-    .badge-dot { width: 10px; height: 10px; background: #6366F1; border-radius: 50%; box-shadow: 0 0 15px #6366F1; }
+    .badge-dot { width: 10px; height: 10px; background: #00D9A6; border-radius: 50%; box-shadow: 0 0 15px #00D9A6; }
 
     /* ── Content ── */
     .content-wrapper {
@@ -219,29 +226,30 @@ const template = (data) => `<!DOCTYPE html>
     }
 
     .header { text-align: center; margin-bottom: 60px; padding: 0 80px; }
-    .eyebrow { font-size: 22px; font-weight: 800; color: var(--brand-indigo); text-transform: uppercase; letter-spacing: 6px; margin-bottom: 20px; }
+    .eyebrow { font-size: 22px; font-weight: 800; color: var(--brand-teal); text-transform: uppercase; letter-spacing: 6px; margin-bottom: 20px; }
     h2 { font-size: 72px; font-weight: 900; line-height: 1.05; letter-spacing: -3px; }
+    h2 em { font-style: normal; color: var(--brand-teal); }
 
     /* ── Premium Mockups ── */
     .composition-wrapper { position: relative; width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 20px; }
     
     .mockup-macbook {
-      position: relative; width: 800px; height: 480px; background: #1F2937; border: 12px solid #374151; border-radius: 20px;
+      position: relative; width: 800px; height: 480px; background: #1F2937; border: 12px solid #374151; border-radius: 12px;
       box-shadow: 0 40px 100px rgba(0,0,0,0.8);
       overflow: hidden; border-bottom: 18px solid #111827;
     }
-    .mockup-macbook .screen-content { width: 100%; height: 100%; overflow: hidden; background: #FFF; position: relative; }
+    .mockup-macbook .screen-content { width: 100%; height: 100%; overflow: hidden; background: #000; position: relative; }
     .mockup-macbook img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
     .mockup-iphone {
-      position: relative; width: 340px; height: 680px; background: #000; border: 10px solid #1A1A1A; border-radius: 44px;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.8), 0 0 40px rgba(139,92,246,0.1);
+      position: relative; width: 320px; height: 640px; background: #000; border: 10px solid #1A1A1A; border-radius: 44px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.8);
       overflow: hidden; z-index: 30;
     }
     .mockup-iphone::before { /* Island */
       content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 90px; height: 28px; background: #000; border-radius: 20px; z-index: 40;
     }
-    .mockup-iphone .screen-content { width: 100%; height: 100%; overflow: hidden; position: relative; background: #FFF; }
+    .mockup-iphone .screen-content { width: 100%; height: 100%; overflow: hidden; position: relative; background: #000; }
     .mockup-iphone img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 
     /* Perspectives */
@@ -249,13 +257,13 @@ const template = (data) => `<!DOCTYPE html>
     .perspective-right { transform: perspective(2000px) rotateY(12deg) scale(0.95); margin-left: -50px; }
     .perspective-center { transform: scale(1.05); }
     .perspective-back { transform: perspective(2000px) rotateX(8deg) scale(0.9); margin-bottom: -150px; }
-    .overlap-front { transform: perspective(1000px) translateZ(50px) scale(0.8); margin-top: -100px; margin-left: -40px; border: 4px solid #000; }
+    .overlap-front { transform: perspective(1000px) translateZ(50px) scale(0.85); margin-top: -120px; margin-left: -50px; border: 4px solid #000; }
 
     /* UI Components */
-    .feature-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 30px; border-radius: 20px; font-size: 26px; font-weight: 600; border-left: 6px solid var(--brand-indigo); margin-bottom: 20px; }
+    .feature-card { background: rgba(0,217,166,0.03); border: 1px solid rgba(0,217,166,0.1); padding: 30px; border-radius: 20px; font-size: 26px; font-weight: 600; border-left: 6px solid var(--brand-teal); margin-bottom: 20px; }
     .grid-tech { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 900px; margin-top: 40px; }
     .tech-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); padding: 30px; border-radius: 20px; font-size: 22px; }
-    .tech-item strong { color: var(--brand-indigo); font-size: 28px; display: block; margin-bottom: 10px; }
+    .tech-item strong { color: var(--brand-teal); font-size: 28px; display: block; margin-bottom: 10px; }
 
     .payment-check div { display: flex; justify-content: space-between; background: rgba(16,185,129,0.03); border: 1px solid rgba(16,185,129,0.15); padding: 30px; border-radius: 20px; width: 800px; margin-bottom: 20px; font-size: 26px; font-weight: 700; }
     .payment-check span:last-child { color: #10B981; }
@@ -265,16 +273,16 @@ const template = (data) => `<!DOCTYPE html>
     .score-circle span { font-size: 18px; color: #9CA3AF; text-transform: uppercase; font-weight: 700; }
 
     .summary-list { list-style: none; width: 800px; margin-top: 40px; }
-    .summary-list li { background: rgba(99,102,241,0.05); border: 1px solid rgba(99,102,241,0.2); padding: 30px; border-radius: 20px; margin-bottom: 15px; font-size: 28px; font-weight: 700; border-left: 8px solid var(--brand-indigo); }
+    .summary-list li { background: rgba(0,217,166,0.05); border: 1px solid rgba(0,217,166,0.1); padding: 30px; border-radius: 20px; margin-bottom: 15px; font-size: 28px; font-weight: 700; border-left: 8px solid var(--brand-teal); }
 
     .cta-box { display: flex; flex-direction: column; align-items: center; margin-top: 60px; }
-    .btn-primary { background: linear-gradient(135deg, var(--brand-indigo), var(--brand-violet)); padding: 30px 80px; border-radius: 100px; font-size: 44px; font-weight: 900; box-shadow: 0 30px 60px rgba(99,102,241,0.4); margin-bottom: 40px; border: 2px solid rgba(255,255,255,0.2); }
+    .btn-primary { background: linear-gradient(135deg, var(--brand-teal), #00A67E); padding: 30px 80px; border-radius: 100px; font-size: 44px; font-weight: 900; color: #08090D; box-shadow: 0 30px 60px rgba(0,217,166,0.3); margin-bottom: 40px; }
     .cta-box p { font-size: 26px; color: #9CA3AF; max-width: 700px; text-align: center; line-height: 1.5; }
 
     /* ── Footer ── */
     .footer { position: absolute; bottom: 70px; left: 80px; right: 80px; display: flex; justify-content: space-between; align-items: center; z-index: 50; }
     .footer-num { font-size: 28px; color: #4B5563; font-weight: 900; }
-    .footer-logo { height: 32px; opacity: 0.5; }
+    .footer-logo { height: 28px; opacity: 0.6; }
   </style>
 </head>
 <body>
@@ -283,7 +291,7 @@ const template = (data) => `<!DOCTYPE html>
   <div class="bg-glow"></div>
 
   <div class="brand-bar">
-    <img src="file:///c:/Users/eddua/opensquad/squads/insta-project-carousel/logo-dusoftware.svg">
+    <img src="${LOGO_PATH}">
   </div>
   <div class="badge"><div class="badge-dot"></div>${data.badge}</div>
 
@@ -297,7 +305,7 @@ const template = (data) => `<!DOCTYPE html>
 
   <div class="footer">
     <span class="footer-num">${data.id} / 10</span>
-    <img class="footer-logo" src="file:///c:/Users/eddua/opensquad/squads/insta-project-carousel/logo-dusoftware.svg">
+    <img class="footer-logo" src="${LOGO_PATH}">
   </div>
 
 </body>
@@ -308,7 +316,6 @@ slidesData.forEach(data => {
   const fileContent = template(data);
   const filePath = path.join(SLIDES_DIR, `slide-${data.id}.html`);
   fs.writeFileSync(filePath, fileContent, 'utf-8');
-  console.log(`✅ slide-${data.id}.html reconstruído com sucesso`);
 });
 
-console.log("Todas as animações/páginas refatoradas!");
+console.log(`✅ ${slidesData.length} slides gerados em ${SLIDES_DIR}`);
